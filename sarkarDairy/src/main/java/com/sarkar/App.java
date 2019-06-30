@@ -1,5 +1,7 @@
 package com.sarkar;
 
+import java.util.Collections;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,9 @@ public class App
 	private UserRepository repository;
     public static void main( String[] args )
     {
-        SpringApplication.run(App.class, args);
+       SpringApplication app = new SpringApplication(App.class);
+       app.setDefaultProperties(Collections.singletonMap("server.port","8083"));
+       app.run(args);
     }
     
     public void run(String...args) {
